@@ -1,17 +1,19 @@
-const getResource = async (url) => {
-    const res = await fetch(url);
+class GotService{
+     async getResource(url){
+        const res = await fetch(url);
+    
+        if(!res.ok){
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
 
-    if(!res.ok){
-        throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        return  await res.json();        
+    };
+    getAllCharacters(){
+        return this.getResource('https://www.anapioficeandfire.com/api/characters?page=5&pageSize=10');
     }
 
+}
 
-          const some = await res.json();
-
-    return some;        
-};
-
-getResource('https://jsonplaceholder.typicode.com/todos/100')
-    .then((res) => console.log('Success', res))
-    .catch(error => console.error(error));
- 
+const got = new GotService();
+got.getAllCharacters()
+    .then(res => console.log(res))
