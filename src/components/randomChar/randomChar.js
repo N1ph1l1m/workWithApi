@@ -15,7 +15,10 @@ export default class RandomChar extends Component {
         loading:true
     }
     onCharLoaded = (char)=>{
-        this.setState({char})
+        this.setState({
+            char,
+            loading: false
+        })
     }
     updateChar(){
         const id = Math.floor(Math.random()* 200 + 25);//от 25 до 200
@@ -24,13 +27,22 @@ export default class RandomChar extends Component {
     }
 
     render() {
-        const{char :{name, gender, born, died,culture}, loading } = this.state;
-        if(loading){
-            return <Spinner/>
-        }
-        return (
+        const{char, loading } = this.state;
+
+        const  content = loading ? <Spinner/> : <View char = { char }/>;
+      //  const content = !loading ? <View char = { char }/> :null;
+                return (
             <div className="random-block rounded">
-                <h4>Random Character: {name}</h4>
+              {content}
+            </div>
+        );
+    }
+}
+const View = ({char})=>{
+    const {name, gender, born, died,culture} = char;
+    return (
+        <>
+          <h4>Random Character: {name}</h4>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex justify-content-between">
                         <span className="term">Gender </span>
@@ -49,7 +61,7 @@ export default class RandomChar extends Component {
                         <span>{culture}</span>
                     </li>
                 </ul>
-            </div>
-        );
-    }
+
+        </>
+    )
 }
