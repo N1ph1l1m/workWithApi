@@ -27,14 +27,13 @@ export default class App extends Component {
         <Container>
           <Row>
             <Col lg={{ size: 5, offset: 0 }}>
-              {char}
-              <button
+            <button
                 type="button"
                 class="btn btn-info"
-                onClick={this.toggleRandomChar}
-              >
-                Info
+                onClick={this.toggleRandomChar}>
+                Show/hide component
               </button>
+              {char}
             </Col>
           </Row>
           <Row>
