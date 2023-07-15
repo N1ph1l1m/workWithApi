@@ -4,12 +4,21 @@ import Header from "../header";
 import RandomChar from "../randomChar";
 import ItemList from "../itemList";
 import CharDetails from "../charDetails";
+import ErrorMessage from "../errorMessage";
 
 export default class App extends Component {
   state = {
     showRandomChar: true,
-    selectedChar:130
+    selectedChar:130,
+    error:false
   };
+
+  componentDidCatch(){
+    console.log("error");
+    this.setState({
+      error: true
+    })
+  }
 
   toggleRandomChar = () => {
     this.setState((state) => {
@@ -27,6 +36,9 @@ export default class App extends Component {
 
   render() {
     const char = this.state.showRandomChar ? <RandomChar /> : null;
+    if(this.state.error){
+      return <ErrorMessage/>
+    }
     return (
       <>
         <Container>
