@@ -8,7 +8,9 @@ import CharDetails from "../charDetails";
 export default class App extends Component {
   state = {
     showRandomChar: true,
+    selectetChar:130
   };
+
   toggleRandomChar = () => {
     this.setState((state) => {
       return {
@@ -16,6 +18,11 @@ export default class App extends Component {
       };
     });
   };
+  onCharSelected = (id)=>{
+    this.setState({
+      selectedChar:id
+    })
+  }
 
   render() {
     const char = this.state.showRandomChar ? <RandomChar /> : null;
@@ -38,10 +45,10 @@ export default class App extends Component {
           </Row>
           <Row>
             <Col md="6">
-              <ItemList />
+              <ItemList onCharSelected = {this.onCharSelected}/>
             </Col>
             <Col md="6">
-              <CharDetails />
+              <CharDetails charId= {this.state.selectetChar} />
             </Col>
           </Row>
         </Container>
