@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ItemList from "../itemList";
 import ErrorMessage from "../errorMessage";
-import CharDetails from "../charDetails";
+import CharDetails , {Field}from "../charDetails";
 import gotService from "../../services/gotService";
 import RowBlock from "../rowBlock/rowBlock";
+
 
 
 export default class CharactedPage extends Component {
@@ -11,14 +12,14 @@ export default class CharactedPage extends Component {
 
   state = {
     selectedChar: 130,
-    error: false,
-  };
+    error: false
+  }
 
-  onCharSelected = (id) => {
+  onItemSelected = (id) => {
     this.setState({
-      selectedChar: id,
-    });
-  };
+      selectedChar: id
+    })
+  }
 
   componentDidCatch() {
     this.setState({
@@ -27,20 +28,26 @@ export default class CharactedPage extends Component {
   }
 
   render() {
+     
     if (this.state.error) {
       return <ErrorMessage />;
     }
 
     const itemList =(
       <ItemList
-            onCharSelected={this.onCharSelected}
+            onItemSelected={this.onItemSelected}
             getData={this.gotService.getAllCharacters}
             renderItem = {({name, gender}) => `${name} (${gender})`}
             />
             )
     
       const charDetails = (
-      <CharDetails charId={this.state.selectedChar} />
+      <CharDetails charId={this.state.selectedChar}>
+          <Field field ='gender' label='Gender'/>
+          <Field field ='born' label='Bord'/>
+          <Field field ='died' label='Died'/>
+          <Field field ='culture' label='Culture'/>
+      </CharDetails>
     )
     return (
       <RowBlock left={itemList} right={charDetails}/>
