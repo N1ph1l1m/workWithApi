@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "reactstrap";
 import ItemList from "../itemList";
 import ErrorMessage from "../errorMessage";
 import CharDetails from "../charDetails";
 import gotService from "../../services/gotService";
+import RowBlock from "../rowBlock/rowBlock";
+
 
 export default class CharactedPage extends Component {
   gotService = new gotService();
@@ -29,17 +30,20 @@ export default class CharactedPage extends Component {
     if (this.state.error) {
       return <ErrorMessage />;
     }
-    return (
-      <Row>
-        <Col md="6">
-          <ItemList
+
+    const itemList =(
+      <ItemList
             onCharSelected={this.onCharSelected}
-            getData={this.gotService.getAllCharacters}/>
-        </Col>
-        <Col md="6">
-          <CharDetails charId={this.state.selectedChar} />
-        </Col>
-      </Row>
-    );
+            getData={this.gotService.getAllCharacters}
+            renderItem = {({name, gender}) => `${name} (${gender})`}
+            />
+            )
+    
+      const charDetails = (
+      <CharDetails charId={this.state.selectedChar} />
+    )
+    return (
+      <RowBlock left={itemList} right={charDetails}/>
+    )
   }
 }
