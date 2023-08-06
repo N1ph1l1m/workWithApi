@@ -5,8 +5,7 @@ import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
 import BooksPage from "../BooksPage";
 import CharactedPage from "../CharactedPage";
-import ItemList from "../itemList";
-import CharDetails from "../charDetails";
+import HousePage from "../HousePage/housePage";
 import gotService from "../../services/gotService";
 //import {BraouserRouter as Router, Route} from 'react-router-dom';
 
@@ -59,23 +58,7 @@ export default class App extends Component {
           </Row>
           <CharactedPage/>
           <BooksPage/>
-
-
-        
-
-          <Row>
-                <Col md="6">
-                <ItemList 
-                onItemSelected = {this.onItemSelected}
-                getData={this.gotService.getAllHouses}
-                renderItem = {(item) => item.name}
-                />
-                </Col>
-                <Col md="6">
-                <CharDetails charId= {this.state.selectedChar} />
-                </Col>
-          </Row>
-      
+          <HousePage/>
         </Container>
       </>
     );

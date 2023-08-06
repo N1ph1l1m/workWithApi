@@ -28,7 +28,6 @@ export default class CharactedPage extends Component {
   }
 
   render() {
-     
     if (this.state.error) {
       return <ErrorMessage />;
     }
