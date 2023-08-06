@@ -3,10 +3,13 @@ import { Col, Row, Container } from "reactstrap";
 import Header from "../header";
 import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
+import BooksPage from "../BooksPage";
 import CharactedPage from "../CharactedPage";
 import ItemList from "../itemList";
 import CharDetails from "../charDetails";
 import gotService from "../../services/gotService";
+//import {BraouserRouter as Router, Route} from 'react-router-dom';
+
 
 export default class App extends Component {
   gotService = new gotService();
@@ -55,20 +58,10 @@ export default class App extends Component {
             </Col>
           </Row>
           <CharactedPage/>
+          <BooksPage/>
 
-          <Row>
-                <Col md="6">
-                <ItemList 
-                onItemSelected = {this.onItemSelected}
-                getData={this.gotService.getAllBooks}
-                renderItem = {(item) => item.name }
-                />
-                </Col>
-                <Col md="6">
-                <CharDetails charId= {this.state.selectedChar} />
-                </Col>
-          </Row>
 
+        
 
           <Row>
                 <Col md="6">
