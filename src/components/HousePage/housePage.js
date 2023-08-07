@@ -39,7 +39,8 @@ export default class HousePage extends Component {
     );
 
     const charDetails = (
-      <CharDetails charId={this.state.selectedChar}>
+      <CharDetails charId={this.state.selectedChar}
+             fetchData={(charId) => this.gotService.getHouse(charId)}>
         <Field field="name" label="name" />
         <Field field="region" label="Region" />
         <Field field="words" label="Words"/>

@@ -56,9 +56,9 @@ export default class App extends Component {
               {char}
             </Col>
           </Row>
-          <CharactedPage/>
-          <BooksPage/>
-          <HousePage/>
+          <CharactedPage/><br/>
+          <BooksPage/><br/>
+          <HousePage/><br/>
         </Container>
       </>
     );

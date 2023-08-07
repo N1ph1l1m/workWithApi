@@ -41,7 +41,7 @@ export default class CharactedPage extends Component {
             )
     
       const charDetails = (
-      <CharDetails charId={this.state.selectedChar}>
+      <CharDetails charId={this.state.selectedChar} fetchData={(charId) => this.gotService.getCharacter(charId)}>
           <Field field ='gender' label='Gender'/>
           <Field field ='born' label='Bord'/>
           <Field field ='died' label='Died'/>

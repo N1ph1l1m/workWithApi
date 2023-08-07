@@ -29,15 +29,30 @@ export default class CharDetails extends Component {
       this.updateChar();
     }
   }
+  // updateChar() {
+  //   const { charId } = this.props;
+  //   if (!charId) {
+  //     return;
+  //   }
+
+  //   this.gotService.getCharacter(charId).then((char) => {
+  //     this.setState({ char });
+  //   });
+  // }
+
   updateChar() {
-    const { charId } = this.props;
-    if (!charId) {
+    const { charId, fetchData } = this.props;
+    if (!charId || !fetchData) {
       return;
     }
 
-    this.gotService.getCharacter(charId).then((char) => {
-      this.setState({ char });
-    });
+    fetchData(charId)
+      .then((char) => {
+        this.setState({ char });
+      })
+      .catch((error) => {
+        console.error('Error fetching character:', error);
+      });
   }
 
   render() {

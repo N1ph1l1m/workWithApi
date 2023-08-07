@@ -9,7 +9,7 @@ export default class BooksPage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedChar: 12,
+    selectedChar: 1,
     error: false,
   };
 
@@ -39,7 +39,8 @@ export default class BooksPage extends Component {
     );
 
     const charDetails = (
-      <CharDetails charId={this.state.selectedChar}>
+      <CharDetails charId={this.state.selectedChar}
+                   fetchData={(charId) => this.gotService.getBook(charId)}>
         <Field field="name" label="name" />
         <Field field="publiser" label="Publiser" />
         <Field field="numberOfPage" label="numberOfPag" />
