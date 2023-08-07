@@ -9,7 +9,7 @@ export default class HousePage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedChar: 12,
+    selectedChar: 378,
     error: false,
   };
 
@@ -44,7 +44,7 @@ export default class HousePage extends Component {
         <Field field="name" label="name" />
         <Field field="region" label="Region" />
         <Field field="words" label="Words"/>
-        <Field field="title" label="Title" />
+        <Field field= 'coatOfArms' label="Coat Of Arms" />
         <Field field="overlord" label="Overlord" />
         <Field field="ancestralWeapons" label="AncestralWeapons" />
       </CharDetails>

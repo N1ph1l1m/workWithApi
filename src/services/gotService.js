@@ -38,7 +38,7 @@ export default class GotService {
 
   getHouse = async (id) => {
     const house = await this.getResource(`/houses/${id}`);
-    return this._transformCharacter(house);
+    return this._transformHouse(house);
   }
  
   isSet(data){
@@ -59,7 +59,7 @@ export default class GotService {
       name: char.name,
       gender: char.gender,
       born: char.born,
-      died: char.char,
+      died: char.died,
       culture: char.culture,
     };
   }
@@ -68,7 +68,7 @@ export default class GotService {
       name: house.name,
       region: house.region,
       words: house.words,
-      titles: house.titles,
+      coatOfArms: house.coatOfArms,
       overlord: house.overlord,
       ancestralWeapons: house.ancestralWeapons,
     };
@@ -77,7 +77,7 @@ export default class GotService {
     return {
       name: book.name,
       numberOfPages: book.numberOfPages,
-      publiser: book.publiser,
+      publisher: book.publisher,
       released: book.released,
     };
   }

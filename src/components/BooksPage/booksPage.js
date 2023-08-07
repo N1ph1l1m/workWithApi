@@ -42,8 +42,8 @@ export default class BooksPage extends Component {
       <CharDetails charId={this.state.selectedChar}
                    fetchData={(charId) => this.gotService.getBook(charId)}>
         <Field field="name" label="name" />
-        <Field field="publiser" label="Publiser" />
-        <Field field="numberOfPage" label="numberOfPag" />
+        <Field field="publisher" label="Publiser" />
+        <Field field="numberOfPages" label="numberOfPag" />
         <Field field="released" label="Released" />
       </CharDetails>
     );
