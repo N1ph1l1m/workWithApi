@@ -57,12 +57,12 @@ export default class App extends Component {
                 </button>
                 {char}
               </Col>
-           
             </Row>
             <Routes>
                 <Route path = '/characters' element = {<CharactedPage/>}/>
-                <Route path = '/books' element = {<BooksPage/>}/>
                 <Route path = '/houses' element = {<HousePage/>}/>
+                <Route path = '/books' exact element = {<BooksPage/>}/>
+                <Route path= '/books/:id' element={<BooksPage/>}/>
               </Routes>
                
           </Container>
