@@ -3,11 +3,11 @@ import { Col, Row, Container } from "reactstrap";
 import Header from "../header";
 import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
-import BooksPage from "../BooksPage";
-import CharactedPage from "../CharactedPage";
-import HousePage from "../HousePage/housePage";
+import CharactedPage from "../pages/charactedPage";
+import BooksPage  from "../pages/booksPage";
+import HousePage  from "../pages/housePage";
 import gotService from "../../services/gotService";
-import {BrowserRouter as Router, Route,Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../../App.css";
 
 export default class App extends Component {
@@ -41,7 +41,7 @@ export default class App extends Component {
 
     return (
       <Router>
-       <div className="App">
+        <div className="App">
           <Container>
             <Header />
           </Container>
@@ -59,18 +59,14 @@ export default class App extends Component {
               </Col>
             </Row>
             <Routes>
-                <Route path = '/characters' element = {<CharactedPage/>}/>
-                <Route path = '/houses' element = {<HousePage/>}/>
-                <Route path = '/books' exact element = {<BooksPage/>}/>
-                <Route path= '/books/:id' element={<BooksPage/>}/>
-              </Routes>
-               
+              <Route path="/characters" element={<CharactedPage />} />
+              <Route path="/houses" element={<HousePage />} />
+              <Route path="/books" exact element={<BooksPage />} />
+              <Route path="/books/:id" element={<BooksPage />} />
+            </Routes>
           </Container>
         </div>
       </Router>
-   
-       
-      
     );
-  } 
+  }
 }
